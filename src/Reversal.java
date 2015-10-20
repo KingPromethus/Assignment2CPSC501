@@ -26,7 +26,7 @@ public class Reversal {
             BufferedWriter bufferedWriter =
                     new BufferedWriter(fileWriter);
             for (int i = outputList.size() - 1; i >= 0; i--) {
-                bufferedWriter.write(new StringBuilder(outputList.get(i)).reverse().toString());
+                bufferedWriter.write(new StringBuilder(outputList.get(i)).toString());
                 bufferedWriter.append(System.getProperty("line.separator"));
             }
 
