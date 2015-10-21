@@ -40,26 +40,11 @@ public class Reversal {
 
             bufferedWriter.close();
         }
-        catch(FileNotFoundException ex) {
-            System.out.println(
-                    "Unable to open file '" +
-                            input + "'");
-        }
         catch(IOException ex) {
             System.out.println(
                     "Error reading file '"
                             + input + "'");
-        }
-    }
-
-    public static void main(String[] args){
-        File input = new File("C:\\Users\\mb_ch\\Documents\\Test.txt");
-        File output = new File("C:\\Users\\mb_ch\\Documents\\Output.txt");
-        try {
-            reverseFile(input, output);
-        }
-        catch (FileNotFoundException e){
-            System.out.println("File not found");
+            throw new FileNotFoundException();
         }
     }
 }
