@@ -16,7 +16,6 @@ public class ReversalTest {
 
     @Test
     public void testReverseFile() throws Exception {
-        try{
             File output = new File("output.txt");
             File file = new File("original.txt");
             PrintWriter write = new PrintWriter(file);
@@ -32,16 +31,10 @@ public class ReversalTest {
 
             assertContents(output, result);
 
-
-        }
-        catch (IOException e){
-            fail("There should not be an exception");
-        }
     }
 
     @Test
-    public void testReverseFile2() throws Exception {
-        try{
+    public void testReverseFile2() throws Exception{
             File output = new File("output.txt");
             File file = new File("original.txt");
             PrintWriter write = new PrintWriter(file);
@@ -55,12 +48,18 @@ public class ReversalTest {
             String[] result = new String[]{"elit. adipiscing consectetur", "amet, sit dolor ipsum Lorem"};
 
             assertContents(output, result);
+    }
 
+    @Test(expected = IOException.class)
+    public void testReversalFileThrowsException() throws Exception {
+        File output = new File("output.txt");
+        File file = new File("original.txt");
+        PrintWriter write = new PrintWriter(file);
+        write.println("Lorem ipsum dolor sit amet,");
+        write.println("consectetur adipiscing elit.");
+        write.close();
 
-        }
-        catch (IOException e){
-            fail("There should not be an exception");
-        }
+        Reversal.reverseFile(new File("firstLol.txt"), new File("lol.txt"));
     }
 
     public void assertContents(File file, String[] result) throws FileNotFoundException{
